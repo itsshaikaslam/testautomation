@@ -1,29 +1,29 @@
-name: Daily Quote Update
+# name: Daily Quote Update
 
-on:
-  schedule:
-    - cron: '*/10 * * * *'  # Runs every 10 minutes
-  workflow_dispatch:  # Allows manual trigger
+# on:
+#   schedule:
+#     - cron: '*/10 * * * *'  # Runs every 10 minutes
+#   workflow_dispatch:  # Allows manual trigger
 
-jobs:
-  update-readme:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-    - name: Run script
-      run: python simpleauto.py
-    - name: Commit changes
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name  "GitHub Action"
-        git add README.md
-        git commit -m "Update Quote of the Day" -a
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
+# jobs:
+#   update-readme:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Set up Python
+#       uses: actions/setup-python@v2
+#       with:
+#         python-version: '3.x'
+#     - name: Run script
+#       run: python simpleauto.py
+#     - name: Commit changes
+#       run: |
+#         git config --local user.email "action@github.com"
+#         git config --local user.name  "GitHub Action"
+#         git add README.md
+#         git commit -m "Update Quote of the Day" -a
+#     - name: Push changes
+#       uses: ad-m/github-push-action@master
+#       with:
+#         github_token: ${{ secrets.GITHUB_TOKEN }}
+#         branch: ${{ github.ref }}
